@@ -10,12 +10,12 @@ AS
 BEGIN
     DECLARE @BrojPrije INT, @BrojPoslije INT;
 
-    SELECT @BrojPrije = COUNT(*) FROM dbo.KreditnaKartica;
+    SELECT @BrojPrije = COUNT(*) FROM KreditnaKartica;
 
-    INSERT INTO dbo.KreditnaKartica (Broj, IstekMjesec, IstekGodina, Tip)
+    INSERT INTO KreditnaKartica (Broj, IstekMjesec, IstekGodina, Tip)
     VALUES (@BrojKartice, @IstekMjesec, @IstekGodina, @Tip);
 
-    SELECT @BrojPoslije = COUNT(*) FROM dbo.KreditnaKartica;
+    SELECT @BrojPoslije = COUNT(*) FROM KreditnaKartica;
 
     PRINT 'Broj zapisa prije umetanja: ' + CAST(@BrojPrije AS NVARCHAR(10));
     PRINT 'Broj zapisa nakon umetanja: ' + CAST(@BrojPoslije AS NVARCHAR(10));
@@ -49,7 +49,7 @@ CREATE PROCEDURE PronadiProizvodePoBoji
 AS
 BEGIN
     SELECT * 
-    FROM dbo.Proizvod
+    FROM Proizvod
     WHERE Boja IN (@Boja1, @Boja2, @Boja3);
 END;
 GO
@@ -57,7 +57,7 @@ GO
 EXEC PronadiProizvodePoBoji 
     @Boja1 = 'Crvena', 
     @Boja2 = 'Plava', 
-    @Boja3 = 'Zelena';
+    @Boja3 = 'Crna';
 GO
 
 DROP PROCEDURE PronadiProizvodePoBoji;
